@@ -43,7 +43,6 @@ TypeStackElement top(Stack *stack)
 	{
 		return -1;
 	}
-	TypeStackElement value = stack->head->value;
 	return stack->head->value;
 }
 

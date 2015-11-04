@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{04C5434D-6767-426B-A834-B0172AC5DC91}</ProjectGuid>
+    <ProjectGuid>{99E583B9-7681-4740-8A22-2926AE36E1A7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My8</RootNamespace>
+    <RootNamespace>My2</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -142,13 +142,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="1.cpp" />
-    <ClCompile Include="ArrayList.cpp" />
-    <ClCompile Include="PointerList.cpp" />
+    <ClCompile Include="2.cpp" />
+    <ClCompile Include="BinaryTree.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArrayList.h" />
-    <ClInclude Include="PointerList.h" />
+    <ClInclude Include="BinaryTree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

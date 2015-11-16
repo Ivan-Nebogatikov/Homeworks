@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include "List.h"
 #include <string>
@@ -73,7 +72,8 @@ void insert(TypeListElem newElement, List *list)
 	else
 	{
 		temp->prev = nullptr;
-		list->head = list->tail = temp;
+		list->head = temp;
+		list->tail = temp;
 	}
 }
 

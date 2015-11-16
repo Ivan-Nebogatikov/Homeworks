@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include "Stack.h"
 #include <locale.h>  
 
@@ -36,23 +36,23 @@ int main()
 
 	const int maxSymbols = 300;
 	char bracketSting[maxSymbols] = {};
-	cout << "Ââåäèòå ñòðîêó èç ñêîáîê: ";	
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑ‚Ñ€Ð¾ÐºÑƒ Ð¸Ð· ÑÐºÐ¾Ð±Ð¾Ðº: ";	
 	cin.getline(bracketSting, maxSymbols);
 
-	cout << (isStringCorrect(bracketSting, stack) ? "Ñêîáêè ïðàâèëüíû!" : "Ñêîáêè íåïðàâèëüíû!") << endl;
+	cout << (isStringCorrect(bracketSting, stack) ? "Ð¡ÐºÐ¾Ð±ÐºÐ¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ñ‹!" : "Ð¡ÐºÐ¾Ð±ÐºÐ¸ Ð½ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ñ‹!") << endl;
 	deleteStack(stack);
 	return 0;
 }
 /*
 TEST 1
 INPUT: {([])}[][][]()[]{}
-OUTPUT: Ñêîáêè ïðàâèëüíû!
+OUTPUT: Ð¡ÐºÐ¾Ð±ÐºÐ¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ñ‹!
 __________________________________________________________________________________
 TEST 2
 INPUT: {}}{{}{}{
-OUTPUT: Ñêîáêè íåïðàâèëüíû!
+OUTPUT: Ð¡ÐºÐ¾Ð±ÐºÐ¸ Ð½ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ñ‹!
 __________________________________________________________________________________
 TEST 3
 INPUT: ]]]]}}}}}))))
-OUTPUT: Ñêîáêè íåïðàâèëüíû!
+OUTPUT: Ð¡ÐºÐ¾Ð±ÐºÐ¸ Ð½ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ñ‹!
 */

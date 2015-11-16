@@ -7,7 +7,7 @@ struct ListElement;
 struct PointerList;
 
 //create new list
-PointerList* createPointerList();
+PointerList* createList();
 
 //add new element to list
 void insert(TypeListElem newElement, PointerList *list);
@@ -18,5 +18,8 @@ void printAllList(PointerList *list);
 //clear all list
 void clear(PointerList *list);
 
-//sorting by merge sort algorithm
-PointerList* mergeSort(PointerList *list);
+//get list legdth
+int getLength(PointerList *list);
+
+//get element with given number
+TypeListElem getElement(int number, PointerList *list);

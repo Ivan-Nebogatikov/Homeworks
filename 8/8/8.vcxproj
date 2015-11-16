@@ -144,10 +144,12 @@
   <ItemGroup>
     <ClCompile Include="1.cpp" />
     <ClCompile Include="ArrayList.cpp" />
+    <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="PointerList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArrayList.h" />
+    <ClInclude Include="MergeSort.h" />
     <ClInclude Include="PointerList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

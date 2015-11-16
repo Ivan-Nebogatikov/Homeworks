@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include "PointerList.h"
 
@@ -15,7 +16,7 @@ struct PointerList
 	int length;
 };
 
-PointerList* createPointerList()
+PointerList* createList()
 {
 	PointerList *list = new PointerList;
 	list->head = nullptr;
@@ -54,9 +55,26 @@ void insert(TypeListElem newElement, PointerList *list)
 	else
 	{
 		temp->prev = nullptr;
-		list->head = list->tail = temp;
+		list->head = temp;
+		list->tail = temp;
 	}
 	list->length++;
+}
+
+int getLength(PointerList *list)
+{
+	return list->length;
+}
+
+TypeListElem getElement(int number, PointerList *list)
+{
+	ListElement *temp = list->head;
+	for (int i = 0; i < number; ++i)
+	{
+		if (temp != nullptr)
+			temp = temp->next;
+	}
+	return temp->element;
 }
 
 void printAllList(PointerList *list)
@@ -65,70 +83,7 @@ void printAllList(PointerList *list)
 	while (temp != nullptr)
 	{
 		std::cout << temp->element << ' ';
-		temp = temp->next;
+			temp = temp->next;
 	}
 	std::cout << std::endl;
-}
-
-PointerList* partOfList(int left, int right, PointerList *list)
-{
-	PointerList *newList = createPointerList();
-	ListElement *temp = list->head;
-	for (int i = 1; i < left; ++i)
-	{
-		temp = temp->next;
-	}
-	for (int i = left; i <= right; ++i)
-	{
-		insert(temp->element, newList);
-		temp = temp->next;
-	}
-	return newList;
-}
-
-PointerList* merge(PointerList *firstList, PointerList *secondList)
-{
-	PointerList *result = createPointerList();
-	ListElement *firstTemp = firstList->head;
-	ListElement *secondTemp = secondList->head;
-	while (firstTemp != nullptr && secondTemp != nullptr)
-	{
-		if (firstTemp->element < secondTemp->element)
-		{
-			insert(firstTemp->element, result);
-			firstTemp = firstTemp->next;
-		}
-		else
-		{
-			insert(secondTemp->element, result);
-			secondTemp = secondTemp->next;
-		}
-	}
-	while (firstTemp != nullptr)
-	{
-		insert(firstTemp->element, result);
-		firstTemp = firstTemp->next;
-	}
-	while (secondTemp != nullptr)
-	{
-		insert(secondTemp->element, result);
-		secondTemp = secondTemp->next;
-	}
-	return result;
-}
-
-PointerList* mergeSort(PointerList *list)
-{
-	if (list->length < 2)
-		return list;
-	PointerList *firstList = partOfList(1, list->length / 2, list);
-	PointerList *secondList = partOfList(list->length / 2 + 1, list->length, list);
-
-	clear(list);
-	PointerList *firstSortedList = mergeSort(firstList);
-	PointerList *secondSortedList = mergeSort(secondList);
-	PointerList *result = merge(firstSortedList, secondSortedList);
-	clear(firstSortedList);
-	clear(secondSortedList);
-	return result;
 }

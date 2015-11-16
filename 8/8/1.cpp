@@ -1,18 +1,12 @@
 #include <iostream>
-#include "PointerList.h"
-#include "ArrayList.h"
+#include "MergeSort.h"
 #include <locale.h>
 
 using namespace std;
 
 void WorkWithList(int number)
 {
-	cout << "Работаем со списом на массиве" << endl; //uncomment when you want to work with ArrayLists
-	ArrayList *list = createArrayList(); //uncomment when you want to work with ArrayLists
-
-	//cout << "Работаем со списом на указателях" << endl; //uncomment when you want to work with PointerLists
-	//PointerList *list = createPointerList(); //uncomment when you want to work with PointerLists
-
+	List *list = createList(); 
 	TypeListElem newElement;
 	for (int i = 0; i < number; ++i)
 	{
@@ -29,7 +23,6 @@ void WorkWithList(int number)
 	clear(list);
 }
 
-
 int main()
 {
 	setlocale(LC_ALL, "Rus");
@@ -45,22 +38,22 @@ int main()
 }
 /*
 TEST 1
-Введите количество элементов: 4
 Работаем со списом на указателях
+Введите количество элементов: 4
 2 1 3 4
 Отсортированный список: 1 2 3 4
 ____________________________________
 TEST 2
-Введите количество элементов: 6
 Работаем со списом на массиве
+Введите количество элементов: 6
 4 10 3 4 5 -40
 Отсортированный список: -40 3 4 4 5 10
 ____________________________________
 TEST 3
+Работаем со списом на массиве
 Введите количество элементов: dsa
 Неправильный ввод, попробуйте еще раз
 2
-Работаем со списом на массиве
 d d
 Неправильный ввод, попробуйте еще раз
 2 1

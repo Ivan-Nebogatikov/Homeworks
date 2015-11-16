@@ -1,5 +1,4 @@
 #include <iostream>
-#include <algorithm>
 #include "ArrayList.h"
 
 struct ArrayList
@@ -8,7 +7,7 @@ struct ArrayList
 	TypeListElem element[MAXNUMBER];
 };
 
-ArrayList* createArrayList()
+ArrayList* createList()
 {
 	ArrayList *list = new ArrayList();
 	list->length = 0;
@@ -39,59 +38,12 @@ void printAllList(ArrayList *list)
 	std::cout << std::endl;
 }
 
-ArrayList* partOfList(int left, int right, ArrayList *list)
+int getLength(ArrayList *list)
 {
-	ArrayList *newList = createArrayList();
-	for (int i = left; i < right; ++i)
-	{
-		insert(list->element[i], newList);
-	}
-	return newList;
+	return list->length;
 }
 
-ArrayList* merge(ArrayList *firstList, ArrayList *secondList)
+TypeListElem getElement(int number, ArrayList *list)
 {
-	ArrayList *result = createArrayList();
-	int i = 0;
-	int j = 0;
-	while (i < std::min(firstList->length, secondList->length) && j < std::min(firstList->length, secondList->length))
-	{
-		if (firstList->element[i] < secondList->element[j])
-		{
-			insert(firstList->element[i], result);
-			++i;
-		}
-		else
-		{
-			insert(secondList->element[j], result);
-			++j;
-		}
-	}
-	while (i < firstList->length)
-	{
-		insert(firstList->element[i], result);
-		++i;
-	}
-	while (j < secondList->length)
-	{
-		insert(secondList->element[j], result);
-		++j;
-	}
-	return result;
-}
-
-ArrayList* mergeSort(ArrayList *list)
-{
-	if (list->length < 2)
-		return list;
-	ArrayList *firstList = partOfList(0, list->length / 2, list);
-	ArrayList *secondList = partOfList(list->length / 2, list->length, list);
-
-	clear(list);
-	ArrayList *firstSortedList = mergeSort(firstList);
-	ArrayList *secondSortedList = mergeSort(secondList);
-	ArrayList *result = merge(firstSortedList, secondSortedList);
-	clear(firstSortedList);
-	clear(secondSortedList);
-	return result;
+	return list->element[number];
 }

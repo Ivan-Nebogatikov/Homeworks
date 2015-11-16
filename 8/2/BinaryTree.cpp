@@ -221,9 +221,5 @@ void printDecreasingTreeNodes(Tree *tree)
 
 bool isTreeEmpty(Tree *tree)
 {
-	if (tree->root == nullptr)
-	{
-		return true;
-	}
-	return false;
+	return tree->root == nullptr;
 }

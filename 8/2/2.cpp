@@ -6,7 +6,6 @@ using namespace std;
 
 void newNode(Tree *tree)
 {
-	system("cls");
 	int number = 0;
 	cout << "Введите значение, которое нужно добавить: ";
 	while (scanf("%d", &number) != 1)
@@ -20,7 +19,6 @@ void newNode(Tree *tree)
 
 void deleteNode(Tree *tree)
 {
-	system("cls");
 	int number = 0;
 	cout << "Введите значение, которое нужно удалить: ";
 	while (scanf("%d", &number) != 1)
@@ -41,7 +39,6 @@ void deleteNode(Tree *tree)
 
 void findNode(Tree *tree)
 {
-	system("cls");
 	int number = 0;
 	cout << "Введите значение, которое нужно найти: ";
 	while (scanf("%d", &number) != 1)
@@ -61,7 +58,6 @@ void findNode(Tree *tree)
 
 void increasePrint(Tree *tree)
 {
-	system("cls");
 	cout << "Множество в возрастающем порядке: ";
 	if (!isTreeEmpty(tree))
 	{
@@ -75,7 +71,6 @@ void increasePrint(Tree *tree)
 
 void decreasePrint(Tree *tree)
 {
-	system("cls");
 	cout << "Множество в убывающем порядке: ";
 	if (!isTreeEmpty(tree))
 	{
@@ -111,7 +106,6 @@ void userInput(Tree *tree)
 		{
 		case 0:
 			return;
-			break;
 		case 1:
 			newNode(tree);
 			break;
@@ -128,7 +122,6 @@ void userInput(Tree *tree)
 			decreasePrint(tree);
 			break;
 		default:
-			system("cls");
 			cout << "Неверная команда, попробуйте еще раз" << endl;
 			break;
 		};

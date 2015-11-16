@@ -1,5 +1,4 @@
 #include "Tree.h"
-#include <cstdio>
 #include <iostream>
 
 struct Node

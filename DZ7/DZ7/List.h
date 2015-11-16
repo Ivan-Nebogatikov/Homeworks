@@ -1,9 +1,10 @@
 #pragma once
+#include <string> 
 
 struct NumberCase
 {
 	std::string name;
-	unsigned __int64 number;
+	std::string number;
 };
 
 typedef NumberCase TypeListElem;
@@ -24,5 +25,8 @@ void printAllList(List *list);
 //clear all list
 void clear(List *list);
 
-//sorting by merge sort algorithm (isSortingNumbers is true when we should sort by numbers, else we sort by names)
-List* mergeSort(bool isSoringNumbers, List *list);
+//get list legdth
+int getLength(List *list);
+
+//get element with given number
+TypeListElem getElement(int number, List *list);

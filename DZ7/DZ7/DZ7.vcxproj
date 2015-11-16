@@ -143,10 +143,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="List.cpp" />
+    <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="Z1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="List.h" />
+    <ClInclude Include="MergeSort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

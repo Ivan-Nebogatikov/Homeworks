@@ -23,17 +23,10 @@ bool isStringCorrect(char *bracketSting, Stack *stack)
 			else
 			{
 				return false;
-				break;
 			}
 		}
 	}
-
-	if (!isEmpty(stack))
-	{
-		return false;
-	}
-
-	return true;
+	return isEmpty(stack);
 }
 
 int main()

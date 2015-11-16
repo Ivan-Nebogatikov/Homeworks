@@ -2,7 +2,7 @@
 
 typedef char TypeStackElement;
 
-struct StackEl;
+struct StackElement;
 
 struct Stack;
 

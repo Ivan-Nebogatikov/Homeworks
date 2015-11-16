@@ -1,5 +1,6 @@
 #include <iostream>
 #include "List.h"
+#include "MergeSort.h"
 #include <fstream>
 #include <string>
 #include <locale.h>  
@@ -21,7 +22,6 @@ void readFromFile(List *list)
 	while (!file.eof())
 	{
 		NumberCase bufferCase;
-
 		file >> bufferCase.name >> bufferCase.number;
 		if (file.fail())
 		{
@@ -37,14 +37,12 @@ void readFromFile(List *list)
 
 void print(List *list)
 {
-	system("cls");
 	cout << "База номеров: "<< endl;
 	printAllList(list);
 }
 
 List* numberSort(List *list)
 {
-	system("cls");
 	list = mergeSort(true, list);
 	cout << "База номеров отсортированна по номерам" << endl;
 	return list;
@@ -52,7 +50,6 @@ List* numberSort(List *list)
 
 List* nameSort(List *list)
 {
-	system("cls");
 	list = mergeSort(false, list);
 	cout << "База номеров отсортированна по именам" << endl;
 	return list;
@@ -69,7 +66,6 @@ void userInput(List *list)
 		cout << "3 - вывести список на экран" << endl;
 
 		int command = 0;
-
 		while (scanf("%d", &command) != 1)
 		{
 			cout << "Неправильный ввод, попробуйте еще раз" << endl;
@@ -80,7 +76,6 @@ void userInput(List *list)
 		{
 		case 0:
 			return;
-			break;
 		case 1:
 			list = nameSort(list);
 			break;
@@ -91,7 +86,6 @@ void userInput(List *list)
 			print(list);
 			break;
 		default:
-			system("cls");
 			cout << "Неверная команда, попробуйте еще раз" << endl;
 			break;
 		}
@@ -133,11 +127,11 @@ INPUT: 1
 INPUT: 3
 База номеров:
 a 1
-f 2
-jfd 6
-e 55
 d 100
+f 2
 eeel 438131
+e 55
+jfd 6
 INPUT: 0
 __________________________________________________________________________________
 TEST 2
@@ -164,11 +158,11 @@ INPUT: saaa
 Неправильный ввод, попробуйте еще раз
 INPUT: 3
 База номеров:
+Steeev 1234
+Ivan 12345
+Denis 300500
+Misha 5555555
 Clara 76844
 Dengi 88005553535
-Denis 300500
-Ivan 12345
-Misha 5555555
-Steeev 1234
 INPUT: 0
 */

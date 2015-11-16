@@ -1,11 +1,13 @@
 #include "Stack.h"
 
-struct StackElement {
+struct StackElement 
+{
 	TypeStackElement value;
 	StackElement *next;
 };
 
-struct Stack {
+struct Stack 
+{
 	StackElement *head;
 };
 
@@ -54,11 +56,10 @@ void deleteStack(Stack *stack)
 		stack->head = stack->head->next;
 		delete temp;
 	}
+	delete stack;
 }
 
 bool isEmpty(Stack *stack)
 {
-	if (stack->head != nullptr)
-		return false;
-	return true;
+	return stack->head == nullptr;
 }

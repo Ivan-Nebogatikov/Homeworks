@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include "List.h"
 #include <string>
@@ -41,7 +40,7 @@ void clear(List *list)
 	delete list;
 }
 
-void insert(TypeListElem newElement, List *list)
+void insert(TypeListElem const &newElement, List *list)
 {
 	ListElement *temp = new ListElement;
 	temp->next = nullptr;

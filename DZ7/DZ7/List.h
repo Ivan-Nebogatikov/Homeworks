@@ -17,7 +17,7 @@ struct List;
 List* createList();
 
 //add new element to list
-void insert(TypeListElem newElement, List *list);
+void insert(TypeListElem const &newElement, List *list);
 
 //print all list elements
 void printAllList(List *list);

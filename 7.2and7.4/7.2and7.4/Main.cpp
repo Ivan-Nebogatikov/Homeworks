@@ -11,67 +11,63 @@ int shuntingYard(char *string, char *postfixForm, Stack *stack)
 	int length = 0;
 	for (int i = 0; i < strlen(string); ++i)
 	{
-		switch (string[i])
+		if (isdigit(string[i]))
 		{
-		case '1':
-		case '2':
-		case '3':
-		case '4':
-		case '5':
-		case '6':
-		case '7':
-		case '8':
-		case '9':
-		case '0':
 			postfixForm[length] = string[i];
 			++length;
-			break;
-		case '+':
-		case '-':
-			while (top(stack) == '+' || top(stack) == '-' || top(stack) == '*' || top(stack) == '/')
+		}
+		else
+		{
+			switch (string[i])
 			{
-				postfixForm[length] = top(stack);
-				++length;
-				pop(stack);
-			}
-		case '*':
-		case '/':
-			while (!isEmpty(stack))
-			{
-				if (top(stack) == '*' || top(stack) == '/')
+			case '+':
+			case '-':
+				while (top(stack) == '+' || top(stack) == '-' || top(stack) == '*' || top(stack) == '/')
 				{
 					postfixForm[length] = top(stack);
 					++length;
 					pop(stack);
 				}
-				else
+				push(stack, string[i]);
+				break;
+			case '*':
+			case '/':
+				while (!isEmpty(stack))
 				{
-					break;
+					if (top(stack) == '*' || top(stack) == '/')
+					{
+						postfixForm[length] = top(stack);
+						++length;
+						pop(stack);
+					}
+					else
+					{
+						break;
+					}
 				}
-			}
-			push(stack, string[i]);
-			break;
-		case '(':
-			push(stack, '(');
-			break;
-		case ')':
-			while (top(stack) != '(')
-			{
-				if (isEmpty(stack))
+				push(stack, string[i]);
+				break;
+			case '(':
+				push(stack, '(');
+				break;
+			case ')':
+				while (top(stack) != '(')
 				{
-					return -1;
+					if (isEmpty(stack))
+					{
+						return -1;
+					}
+					postfixForm[length] = top(stack);
+					++length;
+					pop(stack);
 				}
-				postfixForm[length] = top(stack);
-				++length;
 				pop(stack);
+				break;
+			case ' ':
+				break;
+			default:
+				return -1;
 			}
-			pop(stack);
-			break;
-		case ' ':
-			break;
-		default:
-			return -1;
-			break;
 		}
 	}
 
@@ -94,47 +90,42 @@ int calculation(char *postfixForm, Stack *stack, int length)
 	int secondTop = 0;
 	for (int i = 0; i < length; ++i)
 	{
-		switch (postfixForm[i])
+		if (isdigit(postfixForm[i]))
 		{
-		case '1':
-		case '2':
-		case '3':
-		case '4':
-		case '5':
-		case '6':
-		case '7':
-		case '8':
-		case '9':
-		case '0':
 			push(stack, postfixForm[i] - '0');
-			break;
-		case '+':
-			firstTop = pop(stack);
-			secondTop = pop(stack);
-			push(stack, secondTop + firstTop);
-			break;
-		case '-':
-			firstTop = pop(stack);
-			secondTop = pop(stack);
-			push(stack, secondTop - firstTop);
-			break;
-		case '*':
-			firstTop = pop(stack);
-			secondTop = pop(stack);
-			push(stack, secondTop * firstTop);
-			break;
-		case '/':
-			firstTop = pop(stack);
-			secondTop = pop(stack);
-			if (firstTop != 0)
+		}
+		else
+		{
+			switch (postfixForm[i])
 			{
-				push(stack, secondTop / firstTop);
+			case '+':
+				firstTop = pop(stack);
+				secondTop = pop(stack);
+				push(stack, secondTop + firstTop);
+				break;
+			case '-':
+				firstTop = pop(stack);
+				secondTop = pop(stack);
+				push(stack, secondTop - firstTop);
+				break;
+			case '*':
+				firstTop = pop(stack);
+				secondTop = pop(stack);
+				push(stack, secondTop * firstTop);
+				break;
+			case '/':
+				firstTop = pop(stack);
+				secondTop = pop(stack);
+				if (firstTop != 0)
+				{
+					push(stack, secondTop / firstTop);
+				}
+				else
+				{
+					return _CRT_INT_MAX;
+				}
+				break;
 			}
-			else
-			{
-				return 2147483647;
-			}
-			break;
 		}
 	}
 	return top(stack);
@@ -164,7 +155,7 @@ int main()
 	deleteStack(stack);
 	stack = createStack();
 	int result = calculation(postfixForm, stack, length);
-	if (result == 2147483647)
+	if (result == _CRT_INT_MAX)
 	{
 		cout << "Ошибка: Деление на 0"<< endl;
 	}

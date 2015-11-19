@@ -6,13 +6,13 @@
 
 using namespace std;
 
-void fileRead(Table *table)
+bool isGoodInputFileRead(Table *table)
 {
 	ifstream file("hash.txt", ios::in);
 	if (!file.is_open())
 	{
 		cout << "Файл не найден" << endl;
-		exit(0);
+		return false;
 	}
 
 	while (!file.eof())
@@ -22,13 +22,18 @@ void fileRead(Table *table)
 		add(table, newWord);
 	}
 	file.close();
+	return true;
 }
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
 	Table *table = createTable();
-	fileRead(table);
+	if (!isGoodInputFileRead(table))
+	{
+		deleteHashTable(table);
+		return 0;
+	}
 	printTable(table);
 	deleteHashTable(table);
 	return 0;
@@ -42,8 +47,8 @@ INPUT:
 no non none
 non no no nonono
 OUTPUT:
-Слово: no встречается 3 раз
 Слово: non встречается 2 раз
+Слово: no встречается 3 раз
 Слово: none встречается 1 раз
 Слово: nonono встречается 1 раз
 _________________________________________
@@ -54,13 +59,13 @@ baba afks sdadoaskafd
 safdso fdsfassdapn aaab dsak
 sadasldsdksp aaab
 OUTPUT:
-Слово: dsak встречается 1 раз
 Слово: afks встречается 1 раз
-Слово: safdso встречается 1 раз
 Слово: sdadoaskafd встречается 1 раз
+Слово: safdso встречается 1 раз
 Слово: fdsfassdapn встречается 1 раз
 Слово: sadasldsdksp встречается 1 раз
-Слово: aaab встречается 3 раз
-Слово: baaa встречается 1 раз
 Слово: baba встречается 1 раз
+Слово: aaab встречается 3 раз
+Слово: dsak встречается 1 раз
+Слово: baaa встречается 1 раз
 */

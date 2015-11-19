@@ -38,14 +38,13 @@ void clear(List *list)
 	delete list;
 }
 
-bool existInList(TypeListElem sample, List *list)
+bool existInList(TypeListElem const &sample, List *list)
 {
 	ListElement *temp = list->head;
 	while (temp != nullptr)
 	{
 		if (temp->element.name == sample.name)
 		{
-			++temp->element.number;
 			return true;
 		}
 		temp = temp->next;
@@ -53,7 +52,21 @@ bool existInList(TypeListElem sample, List *list)
 	return false;
 }
 
-void insert(TypeListElem newElement, List *list)
+void IncNumber(TypeListElem const &sample, List *list)
+{
+	ListElement *temp = list->head;
+	while (temp != nullptr)
+	{
+		if (temp->element.name == sample.name)
+		{
+			temp->element.number++;
+			return;
+		}
+		temp = temp->next;
+	}
+}
+
+void insert(TypeListElem const &newElement, List *list)
 {
 	ListElement *temp = new ListElement;
 	temp->next = nullptr;
@@ -63,6 +76,8 @@ void insert(TypeListElem newElement, List *list)
 	{
 		if (existInList(newElement, list))
 		{
+			delete temp;
+			IncNumber(newElement, list);
 			return;
 		}
 		temp->prev = list->tail;

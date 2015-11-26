@@ -21,7 +21,7 @@ int main()
 	printTree(tree);
 	cout << endl;
 	int calculation = calculateTree(tree);
-	if (calculation == 2147483647)
+	if (calculation == INT_MAX)
 	{
 		cout << "Деление на 0" << endl;
 	}

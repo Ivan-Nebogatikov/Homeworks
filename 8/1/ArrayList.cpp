@@ -1,6 +1,8 @@
 #include <iostream>
 #include "ArrayList.h"
 
+int const MAXNUMBER = 1000;
+
 struct ArrayList
 {
 	int length;

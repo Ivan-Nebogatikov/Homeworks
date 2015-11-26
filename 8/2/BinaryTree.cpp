@@ -19,11 +19,6 @@ Tree* createTree()
 	return tree;
 }
 
-void deleteNodeFromTree(Node *node)
-{
-	delete node;
-}
-
 void deleteNodes(Node *node)
 {
 	if (node != nullptr)
@@ -36,7 +31,7 @@ void deleteNodes(Node *node)
 		{
 			deleteNodes(node->right);
 		}
-		deleteNodeFromTree(node);
+		delete node;
 	}
 }
 
@@ -111,6 +106,33 @@ bool existInTree(Tree *tree, int value)
 	return exist(tree->root, value);
 }
 
+int getLeftLeafValueAndDeleteIt(Tree *tree, Node *node, Node *parent)
+{
+	while (node->left != nullptr || node->right != nullptr)
+	{
+		parent = node;
+		if (node->left != nullptr)
+		{
+			node = node->left;
+		}
+		else
+		{
+			node = node->right;
+		}
+	}
+	if (parent->value < node->value)
+	{
+		parent->right = nullptr;
+	}
+	else
+	{
+		parent->left = nullptr;
+	}
+	int value = node->value;
+	delete node;
+	return value;
+}
+
 void deleteNode(Tree *tree, Node *node, Node *parent, int value)
 {
 	if (node->value < value)
@@ -118,62 +140,75 @@ void deleteNode(Tree *tree, Node *node, Node *parent, int value)
 		deleteNode(tree, node->right, node, value);
 		return;
 	}
-	if (node->value < value)
+	if (node->value > value)
 	{
 		deleteNode(tree, node->left, node, value);
 		return;
 	}
 
-	if (node->left != nullptr)
+	if (node->left == nullptr && node->right == nullptr)
 	{
-		while (node->left != nullptr)
-		{
-			node->value = node->left->value;
-			parent = node;
-			node = node->left;
-		}
-		deleteNodeFromTree(node);
 		if (parent != nullptr)
 		{
-			parent->left = nullptr;
-		}
-	}
-	else
-	{
-		if (node->right != nullptr)
-		{
-			while (node->right != nullptr)
-			{
-				node->value = node->right->value;
-				parent = node;
-				node = node->right;
-			}
-			deleteNodeFromTree(node);
-			if (parent != nullptr)
+			if (parent->value < value)
 			{
 				parent->right = nullptr;
+			}
+			else
+			{
+				parent->left = nullptr;
 			}
 		}
 		else
 		{
-			if (parent != nullptr)
+			tree->root = nullptr;
+		}
+		delete node;
+		return;
+	}
+
+	if (node->left != nullptr && node->right == nullptr)
+	{
+		if (parent != nullptr)
+		{
+			if (parent->value < value)
 			{
-				if (parent->value < node->value)
-				{
-					parent->right = nullptr;
-				}
-				else
-				{
-					parent->left = nullptr;
-				}
+				parent->right = node->left;
 			}
 			else
 			{
-				tree->root = nullptr;
+				parent->left = node->left;
 			}
-			deleteNodeFromTree(node);
 		}
+		else
+		{
+			tree->root = node->left;
+		}
+		delete node;
+		return;
 	}
+
+	if (node->left == nullptr && node->right != nullptr)
+	{
+		if (parent != nullptr)
+		{
+			if (parent->value < value)
+			{
+				parent->right = node->right;
+			}
+			else
+			{
+				parent->left = node->right;
+			}
+		}
+		else
+		{
+			tree->root = node->right;
+		}
+		delete node;
+		return;
+	}
+	node->value = getLeftLeafValueAndDeleteIt(tree, node->right, node);
 }
 
 void deleteFromTree(Tree *tree, int value)

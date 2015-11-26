@@ -37,7 +37,7 @@ void createChild(Tree *tree, Node *node, FILE *file)
 		node->left = newLeftNode;
 		node->right = newRightNode;
 		fscanf(file, "%c", &node->nodeOperator);
-		node->nodeValue = NULL;
+		node->nodeValue = 0;
 		fscanf(file, "%c", &uselessSpace);
 		createChild(tree, newLeftNode, file);
 		fscanf(file, "%c", &uselessSpace);
@@ -89,13 +89,10 @@ int calculateChilds(Node *node)
 	{
 	case '+':
 		return calculateChilds(node->left) + calculateChilds(node->right);
-		break;
 	case '-':
 		return calculateChilds(node->left) - calculateChilds(node->right);
-		break;
 	case '*':
 		return calculateChilds(node->left) * calculateChilds(node->right);
-		break;
 	case '/':
 		if (calculateChilds(node->right) != 0)
 		{
@@ -103,13 +100,12 @@ int calculateChilds(Node *node)
 		}
 		else
 		{
-			return  2147483647;
+			return  INT_MAX;
 		}
-
-		break;
 	case '0':
 		return node->nodeValue;
-		break;
+	default:
+		return  INT_MAX;
 	}
 }
 

@@ -133,78 +133,40 @@ int getLeftLeafValueAndDeleteIt(Tree *tree, Node *node, Node *parent)
 	return value;
 }
 
-void deleteNode(Tree *tree, Node *node, Node *parent, int value)
+void deleteNode(Tree *tree, Node *node, Node *&parent, int value)
 {
+	if (node == nullptr)
+	{
+		return;
+	}
 	if (node->value < value)
 	{
-		deleteNode(tree, node->right, node, value);
+		deleteNode(tree, node->right, node->right, value);
 		return;
 	}
 	if (node->value > value)
 	{
-		deleteNode(tree, node->left, node, value);
+		deleteNode(tree, node->left, node->left, value);
 		return;
 	}
 
 	if (node->left == nullptr && node->right == nullptr)
 	{
-		if (parent != nullptr)
-		{
-			if (parent->value < value)
-			{
-				parent->right = nullptr;
-			}
-			else
-			{
-				parent->left = nullptr;
-			}
-		}
-		else
-		{
-			tree->root = nullptr;
-		}
+		parent = nullptr;
 		delete node;
 		return;
 	}
 
 	if (node->left != nullptr && node->right == nullptr)
 	{
-		if (parent != nullptr)
-		{
-			if (parent->value < value)
-			{
-				parent->right = node->left;
-			}
-			else
-			{
-				parent->left = node->left;
-			}
-		}
-		else
-		{
-			tree->root = node->left;
-		}
+		parent = node->left;
 		delete node;
 		return;
 	}
 
 	if (node->left == nullptr && node->right != nullptr)
 	{
-		if (parent != nullptr)
-		{
-			if (parent->value < value)
-			{
-				parent->right = node->right;
-			}
-			else
-			{
-				parent->left = node->right;
-			}
-		}
-		else
-		{
-			tree->root = node->right;
-		}
+		parent = node->right;
 		delete node;
 		return;
 	}
@@ -213,7 +175,7 @@ void deleteNode(Tree *tree, Node *node, Node *parent, int value)
 
 void deleteFromTree(Tree *tree, int value)
 {
-	deleteNode(tree, tree->root, nullptr, value);
+	deleteNode(tree, tree->root, tree->root, value);
 }
 
 void printIncreasingNodes(Node *node)

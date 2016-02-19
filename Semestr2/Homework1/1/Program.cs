@@ -1,16 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace _1
+namespace Problem1
 {
+    // Class for calculating factorial number
     class Program
     {
+        // Main method for calculating
         static void Main(string[] args)
         {
-            Console.WriteLine("das");
+            Console.Write("Введите число: ");
+            ulong number = Convert.ToUInt64(Console.ReadLine());
+            Console.WriteLine("Факториал числа: {0}", Factorial(number));
+        }
+
+        private static ulong Factorial(ulong number)
+        {
+            if (number > 0)
+                return number * Factorial(number - 1);
+            return 1;
         }
     }
 }

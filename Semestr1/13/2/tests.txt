@@ -1,0 +1,34 @@
+Test 1
+INPUT:
+ffdssfd/*fsdfsd
+aaaaaaa*/fds/*dasd*/asdaf
+asdfsaf*//*/
+OUTPUT:
+/*fsdfsd
+aaaaaaa*//*dasd*/
+_______________________________________
+Test 2
+new/*com
+*/ent for test
+g/**/ood test is/*no*/t bad test
+**/
+OUTPUT:
+/*com
+*//**//*no*/
+_______________________________________
+Test 3
+/*fdasdsadasdas
+dassa
+/*dassa*/
+OUTPUT:
+/*fdasdsadasdas
+dassa
+/*dassa*/
+_______________________________________
+Test 4
+/*fdasdsadasdas
+dassa*/
+/*dassa
+OUTPUT:
+/*fdasdsadasdas
+dassa*/

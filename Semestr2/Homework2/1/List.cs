@@ -69,7 +69,7 @@ namespace NamespaceList
         /// Remove element from list
         /// </summary>
         /// <param name="element"> Element value to remove </param>
-        /// <returns> Returns true is removing succeeded else returns false </returns>
+        /// <returns> True is removing succeeded else returns false </returns>
         public bool Remove(int element)
         {
             if (head.value == element)

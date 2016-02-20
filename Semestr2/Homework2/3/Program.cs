@@ -1,9 +1,5 @@
 ﻿using System;
 using NamespaceHashTable;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Problem3
 {
@@ -28,7 +24,7 @@ namespace Problem3
                 Console.WriteLine("Другое - выход");
                 Console.Write("Ваш выбор: ");
                 int number = Convert.ToInt32(Console.ReadLine());
-                switch(number)
+                switch (number)
                 {
                     case 1:
                         Add(hashTable);

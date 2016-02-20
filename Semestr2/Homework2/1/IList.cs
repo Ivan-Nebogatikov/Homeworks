@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace InterfaceList
+﻿namespace InterfaceList
 {
     /// <summary>
     /// Interface for work with List
@@ -12,7 +6,7 @@ namespace InterfaceList
     interface IList
     {
         void Add(int newElement);
-        
+
         int IndexOf(int element);
 
         bool Remove(int element);

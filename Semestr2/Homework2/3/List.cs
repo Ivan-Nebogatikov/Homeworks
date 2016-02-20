@@ -1,5 +1,4 @@
 ﻿using InterfaceList;
-using System;
 
 namespace NamespaceList
 {

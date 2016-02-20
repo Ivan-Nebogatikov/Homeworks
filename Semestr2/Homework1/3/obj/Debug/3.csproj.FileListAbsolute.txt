@@ -1,0 +1,6 @@
+C:\Users\moolu\Documents\GitHub\Homeworks\Semestr2\Homework1\3\bin\Debug\3.exe.config
+C:\Users\moolu\Documents\GitHub\Homeworks\Semestr2\Homework1\3\bin\Debug\3.exe
+C:\Users\moolu\Documents\GitHub\Homeworks\Semestr2\Homework1\3\bin\Debug\3.pdb
+C:\Users\moolu\Documents\GitHub\Homeworks\Semestr2\Homework1\3\obj\Debug\3.csprojResolveAssemblyReference.cache
+C:\Users\moolu\Documents\GitHub\Homeworks\Semestr2\Homework1\3\obj\Debug\3.exe
+C:\Users\moolu\Documents\GitHub\Homeworks\Semestr2\Homework1\3\obj\Debug\3.pdb

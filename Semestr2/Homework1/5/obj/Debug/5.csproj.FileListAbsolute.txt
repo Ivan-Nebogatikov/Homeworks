@@ -1,0 +1,5 @@
+C:\Users\moolu\Documents\GitHub\Homeworks\Semestr2\Homework1\5\bin\Debug\5.exe.config
+C:\Users\moolu\Documents\GitHub\Homeworks\Semestr2\Homework1\5\bin\Debug\5.exe
+C:\Users\moolu\Documents\GitHub\Homeworks\Semestr2\Homework1\5\bin\Debug\5.pdb
+C:\Users\moolu\Documents\GitHub\Homeworks\Semestr2\Homework1\5\obj\Debug\5.exe
+C:\Users\moolu\Documents\GitHub\Homeworks\Semestr2\Homework1\5\obj\Debug\5.pdb

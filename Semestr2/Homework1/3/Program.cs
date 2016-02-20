@@ -5,12 +5,12 @@ namespace Problem3
     // Class for sorting array
     class Program
     {
-        const int amountOfNumber = 5;
+        const int amountOfNumber = 6;
 
         // Main method for program
         static void Main(string[] args)
         {
-            int[] array = new int[amountOfNumber] { 1, 2, 0, 3, -3 };
+            int[] array = new int[amountOfNumber] { 100, 1, 2, 0, 3, -3 };
             SortArray(array);
             foreach (int element in array)
             {

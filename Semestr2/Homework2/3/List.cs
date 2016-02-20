@@ -13,7 +13,7 @@ namespace NamespaceList
 
         private class Node
         {
-            public int value;
+            public string value;
             public Node next;
         }
         /// <summary>
@@ -28,7 +28,7 @@ namespace NamespaceList
         /// Add new elemet to list
         /// </summary>
         /// <param name="newElement"> New Element to list </param>
-        public void Add(int newElement)
+        public void Add(string newElement)
         {
             Node newNode = new Node();
             newNode.value = newElement;
@@ -51,7 +51,7 @@ namespace NamespaceList
         /// </summary>
         /// <param name="element"> Element value </param>
         /// <returns> >=0 if element exist; "-1" if not found </returns>
-        public int IndexOf(int element)
+        public int IndexOf(string element)
         {
             Node temp = head;
             int i = 0;
@@ -70,7 +70,7 @@ namespace NamespaceList
         /// </summary>
         /// <param name="element"> Element value to remove </param>
         /// <returns> True is removing succeeded else returns false </returns>
-        public bool Remove(int element)
+        public bool Remove(string element)
         {
             if (head == null)
                 return false;
@@ -109,11 +109,11 @@ namespace NamespaceList
         /// Returns element in list. Numeration from 0
         /// </summary>
         /// <param name="index"> Index of element </param>
-        /// <returns> Int value or Int32.MinValue if index is bigger than list size </returns>
-        public int GetElement(int index)
+        /// <returns> String value or "" if index is bigger than list size </returns>
+        public string GetElement(int index)
         {
             if (index >= size)
-                return Int32.MinValue;
+                return "";
             Node temp = head;
             for (int i = 0; i < index; ++i)
             {

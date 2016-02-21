@@ -29,7 +29,7 @@ namespace NamespaceStack
         {
             return pointer == 0;
         }
-        
+
         /// <summary>
         /// Get last stack element
         /// </summary>

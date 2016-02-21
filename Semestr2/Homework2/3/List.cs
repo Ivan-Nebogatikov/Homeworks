@@ -15,6 +15,7 @@ namespace NamespaceList
             public string value;
             public Node next;
         }
+
         /// <summary>
         /// List constructor
         /// </summary>
@@ -99,7 +100,7 @@ namespace NamespaceList
         /// Returns list size
         /// </summary>
         /// <returns> Size </returns>
-        public int GetLenght()
+        public int GetLength()
         {
             return size;
         }

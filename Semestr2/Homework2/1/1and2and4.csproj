@@ -44,10 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
-    <Compile Include="Stack.cs" />
+    <Compile Include="ArrayStack.cs" />
     <Compile Include="IStack.cs" />
     <Compile Include="IList.cs" />
     <Compile Include="List.cs" />
+    <Compile Include="ListStack.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

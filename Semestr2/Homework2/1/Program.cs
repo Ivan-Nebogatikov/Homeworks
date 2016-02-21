@@ -1,5 +1,6 @@
 ﻿using System;
-using NamespaceStack;
+using NamespaceArrayStack;
+using NamespaceListStack;
 using NamespaceCalculator;
 
 namespace NamespaceMain
@@ -12,10 +13,10 @@ namespace NamespaceMain
         /// <summary>
         /// Main method
         /// </summary>
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var stack = new ArrayStack();
-            //var stack = new ListStack();
+            //var stack = new ArrayStack();
+            var stack = new ListStack();
             Console.Write("Введите выражение в постфиксном виде: ");
             string str = Console.ReadLine();
             int answer = Calculator.Calculate(stack, str);

@@ -1,5 +1,4 @@
-﻿using Problem1;
-using System;
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Problem1.Tests

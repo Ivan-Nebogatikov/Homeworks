@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Problem1
+﻿namespace Problem2
 {
     /// <summary>
     /// Main list class
@@ -12,25 +10,21 @@ namespace Problem1
 
         private class Node
         {
-            private int number;
+            private string _value;
             private Node next;
 
-            /// <summary>
-            /// Create new node
-            /// </summary>
-            /// <param name="value"> Value of new node </param>
-            public Node(int value)
+            public Node(string str)
             {
-                number = value;
+                _value = str;
             }
 
             /// <summary>
             /// Set and get node value
             /// </summary>
-            public int Value
+            public string Value
             {
-                get { return number; }
-                set { number = value; }
+                get { return _value; }
+                set { _value = value; }
             }
 
             /// <summary>
@@ -42,7 +36,7 @@ namespace Problem1
                 set { next = value; }
             }
         }
-        
+
         /// <summary>
         /// List constructor
         /// </summary>
@@ -54,7 +48,7 @@ namespace Problem1
         /// Add new elemet to list
         /// </summary>
         /// <param name="newElement"> New Element to list </param>
-        public void Add(int newElement)
+        public void Add(string newElement)
         {
             Node newNode = new Node(newElement);
             if (size == 0)
@@ -74,7 +68,7 @@ namespace Problem1
         /// </summary>
         /// <param name="element"> Element value </param>
         /// <returns> >=0 if element exist; "-1" if not found </returns>
-        public int IndexOf(int element)
+        public int IndexOf(string element)
         {
             Node temp = head;
             int i = 0;
@@ -93,7 +87,7 @@ namespace Problem1
         /// </summary>
         /// <param name="element"> Element value to remove </param>
         /// <returns> True is removing succeeded else returns false </returns>
-        public bool Remove(int element)
+        public bool Remove(string element)
         {
             if (head == null)
                 return false;
@@ -132,11 +126,11 @@ namespace Problem1
         /// Returns element in list. Numeration from 0
         /// </summary>
         /// <param name="index"> Index of element </param>
-        /// <returns> Int value or Int32.MinValue if index is bigger than list size </returns>
-        public int GetElement(int index)
+        /// <returns> String value or "" if index is bigger than list size </returns>
+        public string GetElement(int index)
         {
             if (index >= size || index < 0)
-                return Int32.MinValue;
+                return "";
             Node temp = head;
             for (int i = 0; i < index; ++i)
             {

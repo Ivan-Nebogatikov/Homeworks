@@ -26,10 +26,7 @@ namespace Problem1
         /// Get value of expression
         /// </summary>
         /// <returns> Int value </returns>
-        public int Calculate()
-        {
-            return Convert.ToInt32(Element);
-        }
+        public int Calculate() => Convert.ToInt32(Element);
 
         /// <summary>
         /// Print node element

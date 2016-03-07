@@ -45,10 +45,14 @@
   <ItemGroup>
     <Compile Include="AbstractTreeElement.cs" />
     <Compile Include="BinaryTree.cs" />
+    <Compile Include="DivisionOperator.cs" />
+    <Compile Include="MinusOperator.cs" />
+    <Compile Include="MultiplicationOperator.cs" />
     <Compile Include="Operand.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Operator.cs" />
+    <Compile Include="PlusOperator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

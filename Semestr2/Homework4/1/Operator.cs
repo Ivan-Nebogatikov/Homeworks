@@ -8,11 +8,6 @@ namespace Problem1
     public class Operator : AbstractTreeElement
     {
         /// <summary>
-        /// Node value
-        /// </summary>
-        public char Element { get; set; }
-
-        /// <summary>
         /// Left child of node
         /// </summary>
         public AbstractTreeElement LeftChild { get; set; }
@@ -26,37 +21,17 @@ namespace Problem1
         /// Calculating children
         /// </summary>
         /// <returns> Value of calculating expression </returns>
-        public int Calculate()
+        public virtual int Calculate()
         {
-            switch (Element)
-            {
-                case '+':
-                    return LeftChild.Calculate() + RightChild.Calculate();
-                case '-':
-                    return LeftChild.Calculate() - RightChild.Calculate();
-                case '*':
-                    return LeftChild.Calculate() * RightChild.Calculate();
-                case '/':
-                    if (RightChild.Calculate() != '0')
-                        return LeftChild.Calculate() / RightChild.Calculate();
-                    else
-                        throw new DivideByZeroException();
-                default:
-                    throw new Exception();
-            }
+            throw new Exception();
         }
 
         /// <summary>
         /// Print node and its children
         /// </summary>
-        public void Print()
+        public virtual void Print()
         {
-            Console.Write("( " + Element + ' ');
-            if (LeftChild != null)
-                LeftChild.Print();
-            if (RightChild != null)
-                RightChild.Print();
-            Console.Write(") ");
+            throw new Exception();
         }
     }
 }

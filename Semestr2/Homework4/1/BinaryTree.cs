@@ -25,8 +25,24 @@
                 ++curNumber;
             if (expression[curNumber] == '(')
             {
-                Operator newOpertator = new Operator();
-                newOpertator.Element = expression[curNumber + 1];
+                Operator newOpertator;
+                switch (expression[curNumber + 1])
+                {
+                    case '+':
+                        newOpertator = new PlusOperator();
+                        break;
+                    case '-':
+                        newOpertator = new MinusOperator();
+                        break;
+                    case '*':
+                        newOpertator = new MultiplicationOperator();
+                        break;
+                    case '/':
+                        newOpertator = new DivisionOperator();
+                        break;
+                    default:
+                        throw new System.Exception();
+                }
                 curNumber += 2;
                 var newNode = newOpertator.LeftChild;
                 CreateChild(ref newNode, expression, ref curNumber);

@@ -3,23 +3,8 @@
     /// <summary>
     /// Interface for different tree elements
     /// </summary>
-    interface AbstractTreeElement
+    public interface AbstractTreeElement
     {
-        /// <summary>
-        /// Value of tree element
-        /// </summary>
-        string Element { get; set; }
-
-        /// <summary>
-        /// Left child of element
-        /// </summary>
-        AbstractTreeElement LeftChild { get; set; }
-
-        /// <summary>
-        /// Right child of element
-        /// </summary>
-        AbstractTreeElement RightChild { get; set; }
-
         /// <summary>
         /// Method for element calculating
         /// </summary>

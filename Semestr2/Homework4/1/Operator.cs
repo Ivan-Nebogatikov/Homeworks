@@ -5,12 +5,12 @@ namespace Problem1
     /// <summary>
     /// Operator in binary tree class
     /// </summary>
-    class Operator : AbstractTreeElement
+    public class Operator : AbstractTreeElement
     {
         /// <summary>
         /// Node value
         /// </summary>
-        public string Element { get; set; }
+        public char Element { get; set; }
 
         /// <summary>
         /// Left child of node
@@ -30,14 +30,14 @@ namespace Problem1
         {
             switch (Element)
             {
-                case "+":
+                case '+':
                     return LeftChild.Calculate() + RightChild.Calculate();
-                case "-":
+                case '-':
                     return LeftChild.Calculate() - RightChild.Calculate();
-                case "*":
+                case '*':
                     return LeftChild.Calculate() * RightChild.Calculate();
-                case "/":
-                    if (RightChild.Element != "0")
+                case '/':
+                    if (RightChild.Calculate() != '0')
                         return LeftChild.Calculate() / RightChild.Calculate();
                     else
                         throw new DivideByZeroException();

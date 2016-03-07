@@ -25,32 +25,33 @@
                 ++curNumber;
             if (expression[curNumber] == '(')
             {
-                node = new Operator();
-                node.Element = expression[curNumber + 1].ToString();
+                Operator newOpertator = new Operator();
+                newOpertator.Element = expression[curNumber + 1];
                 curNumber += 2;
-                var newNode = node.LeftChild;
+                var newNode = newOpertator.LeftChild;
                 CreateChild(ref newNode, expression, ref curNumber);
-                node.LeftChild = newNode;
+                newOpertator.LeftChild = newNode;
                 if (expression[curNumber] == ')')
                 {
                     ++curNumber;
                 }
-                newNode = node.RightChild;
+                newNode = newOpertator.RightChild;
                 CreateChild(ref newNode, expression, ref curNumber);
-                node.RightChild = newNode;
+                newOpertator.RightChild = newNode;
+                node = newOpertator;
             }
             else
             {
-                node = new Operand();
-                int newValue = 0;
+                Operand newOperand = new Operand();
+                newOperand.Element = 0;
                 while (expression[curNumber] != ' ')
                 {
                     if (expression[curNumber] == ')')
                         break;
-                    newValue = newValue * 10 + (expression[curNumber] - '0');
+                    newOperand.Element = newOperand.Element * 10 + (expression[curNumber] - '0');
                     ++curNumber;
                 }
-                node.Element = newValue.ToString();
+                node = newOperand;
             }
         }
 

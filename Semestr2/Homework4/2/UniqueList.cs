@@ -11,24 +11,15 @@
         /// <param name="newElement"> New element to list </param>
         public override void Add(int newElement)
         {
-            Node temp = head;
-            while (temp != null)
+            try
             {
-                if (temp.Value == newElement)
-                    throw new ExistingNumberException();
-                temp = temp.Next;
+                IndexOf(newElement);
+                throw new ExistingNumberException();
             }
-            Node newNode = new Node(newElement);
-            if (size == 0)
+            catch (ElementDoesNotFoundInListException)
             {
-                head = newNode;
-            }
-            else
-            {
-                newNode.Next = head;
-                head = newNode;
-            }
-            ++size;
+                base.Add(newElement);
+            }            
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Problem2.Tests
         {
             list.Add(4);
             list.Add(7);
+            Assert.AreEqual(2, list.GetLength());
         }
 
         [TestMethod()]

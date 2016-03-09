@@ -5,10 +5,10 @@
     /// </summary>
     public class List : IList
     {
-        protected Node head;
-        protected int size;
+        private Node head;
+        private int size;
 
-        protected class Node
+        private class Node
         {
             /// <summary>
             /// Create new node
@@ -61,7 +61,7 @@
         /// </summary>
         /// <param name="element"> Element value </param>
         /// <returns> >=0 if element exist; ElementDoesNotFoundInListException() if element does not exist </returns>
-        public virtual int IndexOf(int element)
+        public int IndexOf(int element)
         {
             Node temp = head;
             int i = 0;
@@ -80,7 +80,7 @@
         /// Throw RemoveNotExistingElementException() if element does not exist
         /// </summary>
         /// <param name="element"> Element value to remove </param>
-        public virtual void Remove(int element)
+        public void Remove(int element)
         {
             if (head == null)
                 throw new RemoveNotExistingElementException();
@@ -110,7 +110,7 @@
         /// Returns list size
         /// </summary>
         /// <returns> Size </returns>
-        public virtual int GetLength()
+        public int GetLength()
         {
             return size;
         }
@@ -120,7 +120,7 @@
         /// </summary>
         /// <param name="index"> Index of element </param>
         /// <returns> Int value or OutOfBoundsOfListException() if index is bigger than list size </returns>
-        public virtual int GetElement(int index)
+        public int GetElement(int index)
         {
             if (index >= size)
                 throw new OutOfBoundsOfListException();

@@ -11,15 +11,10 @@
         /// <param name="newElement"> New element to list </param>
         public override void Add(int newElement)
         {
-            try
-            {
-                IndexOf(newElement);
-                throw new ExistingNumberException();
-            }
-            catch (ElementDoesNotFoundInListException)
-            {
+            if (!Contains(newElement))
                 base.Add(newElement);
-            }            
+            else
+                throw new ExistingNumberException();       
         }
     }
 }

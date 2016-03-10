@@ -76,6 +76,23 @@
         }
 
         /// <summary>
+        /// Is element contains in list
+        /// </summary>
+        /// <param name="element"> Element value </param>
+        /// <returns> True if element exist in list; else returns false </returns>
+        public bool Contains(int element)
+        {
+            Node temp = head;
+            while (temp != null)
+            {
+                if (temp.Value == element)
+                    return true;
+                temp = temp.Next;
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Remove element from list
         /// Throw RemoveNotExistingElementException() if element does not exist
         /// </summary>

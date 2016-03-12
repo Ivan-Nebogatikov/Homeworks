@@ -42,7 +42,6 @@
         /// </summary>
         /// <param name="index"> Index of element </param>
         /// <param name="value"> New element value </param>
-        /// <returns></returns>
         void SetNewElementValue(int index, int value);
     }
 }

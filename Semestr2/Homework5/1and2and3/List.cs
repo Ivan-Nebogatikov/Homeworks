@@ -41,7 +41,7 @@
         /// Add new elemet to list
         /// </summary>
         /// <param name="newElement"> New element to list </param>
-        public virtual void Add(int newElement)
+        public void Add(int newElement)
         {
             Node newNode = new Node(newElement);
             if (size == 0)
@@ -154,7 +154,6 @@
         /// </summary>
         /// <param name="index"> Index of element </param>
         /// <param name="value"> New element value </param>
-        /// <returns></returns>
         public void SetNewElementValue(int index, int value)
         {
             if (index >= size)

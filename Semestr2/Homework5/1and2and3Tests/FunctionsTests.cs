@@ -47,5 +47,40 @@ namespace Problem1and2and3.Tests
             list.Add(3);
             Assert.AreEqual(6, Functions.Fold(list, 1, (acc, elem) => acc * elem));
         }
+
+        [TestMethod()]
+        public void ComplexTest()
+        {
+            list.Add(1);
+            list.Add(22);
+            list.Add(-3);
+            list.Add(1);
+            list.Add(0);
+            list.Add(222);
+            list.Add(1);
+            list.Add(-79);
+            list.Add(38);
+
+            list = Functions.Map(list, x => x - 4);
+            Assert.AreEqual(9, list.GetLength());
+            Assert.AreEqual(34, list.GetElement(0));
+            Assert.AreEqual(-83, list.GetElement(1));
+            Assert.AreEqual(-3, list.GetElement(2));
+            Assert.AreEqual(218, list.GetElement(3));
+            Assert.AreEqual(-4, list.GetElement(4));
+            Assert.AreEqual(-3, list.GetElement(5));
+            Assert.AreEqual(-7, list.GetElement(6));
+            Assert.AreEqual(18, list.GetElement(7));
+            Assert.AreEqual(-3, list.GetElement(8));
+
+            list = Functions.Filter(list, x => x % 3 == 0);
+            Assert.AreEqual(4, list.GetLength());
+            Assert.AreEqual(-3, list.GetElement(0));
+            Assert.AreEqual(18, list.GetElement(1));
+            Assert.AreEqual(-3, list.GetElement(2));
+            Assert.AreEqual(-3, list.GetElement(3));
+
+            Assert.AreEqual(991, Functions.Fold(list, 1000, (acc, elem) => acc - elem));
+        }
     }
 }

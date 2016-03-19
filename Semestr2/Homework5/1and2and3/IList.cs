@@ -36,12 +36,5 @@
         /// <param name="index"> Index of element </param>
         /// <returns> Int value or OutOfBoundsOfListException if index is bigger than list size </returns>
         int GetElement(int index);
-
-        /// <summary>
-        /// Set new value to list element
-        /// </summary>
-        /// <param name="index"> Index of element </param>
-        /// <param name="value"> New element value </param>
-        void SetNewElementValue(int index, int value);
     }
 }

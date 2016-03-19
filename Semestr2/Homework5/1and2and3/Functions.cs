@@ -15,9 +15,10 @@ namespace Problem1and2and3
         /// <returns> Changed list </returns>
         public static List Map(List list, Func<int, int> function)
         {
+            List newList = new List();
             for (int i = 0; i < list.GetLength(); ++i)
-                list.SetNewElementValue(i, function(list.GetElement(i)));
-            return list;
+                    newList.Add(function(list.GetElement(i)));
+            return newList;
         }
 
         /// <summary>

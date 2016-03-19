@@ -1,5 +1,6 @@
 ﻿using Problem1and2and3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using _1and2and3;
 
 namespace Problem1and2and3.Tests
 {
@@ -20,10 +21,10 @@ namespace Problem1and2and3.Tests
             list.Add(3);
             list.Add(30);
             list.Add(-8);
-            list = Functions.Map(list, x => x * 2);
-            Assert.AreEqual(-16, list.GetElement(0));
-            Assert.AreEqual(60, list.GetElement(1));
-            Assert.AreEqual(6, list.GetElement(2));
+            List newlist = Functions.Map(list, x => x * 2);
+            Assert.AreEqual(-16, newlist.GetElement(2));
+            Assert.AreEqual(60, newlist.GetElement(1));
+            Assert.AreEqual(6, newlist.GetElement(0));
         }
 
         [TestMethod()]
@@ -63,22 +64,22 @@ namespace Problem1and2and3.Tests
 
             list = Functions.Map(list, x => x - 4);
             Assert.AreEqual(9, list.GetLength());
-            Assert.AreEqual(34, list.GetElement(0));
-            Assert.AreEqual(-83, list.GetElement(1));
-            Assert.AreEqual(-3, list.GetElement(2));
-            Assert.AreEqual(218, list.GetElement(3));
+            Assert.AreEqual(34, list.GetElement(8));
+            Assert.AreEqual(-83, list.GetElement(7));
+            Assert.AreEqual(-3, list.GetElement(6));
+            Assert.AreEqual(218, list.GetElement(5));
             Assert.AreEqual(-4, list.GetElement(4));
-            Assert.AreEqual(-3, list.GetElement(5));
-            Assert.AreEqual(-7, list.GetElement(6));
-            Assert.AreEqual(18, list.GetElement(7));
-            Assert.AreEqual(-3, list.GetElement(8));
+            Assert.AreEqual(-3, list.GetElement(3));
+            Assert.AreEqual(-7, list.GetElement(2));
+            Assert.AreEqual(18, list.GetElement(1));
+            Assert.AreEqual(-3, list.GetElement(0));
 
             list = Functions.Filter(list, x => x % 3 == 0);
             Assert.AreEqual(4, list.GetLength());
-            Assert.AreEqual(-3, list.GetElement(0));
-            Assert.AreEqual(18, list.GetElement(1));
-            Assert.AreEqual(-3, list.GetElement(2));
             Assert.AreEqual(-3, list.GetElement(3));
+            Assert.AreEqual(18, list.GetElement(2));
+            Assert.AreEqual(-3, list.GetElement(1));
+            Assert.AreEqual(-3, list.GetElement(0));
 
             Assert.AreEqual(991, Functions.Fold(list, 1000, (acc, elem) => acc - elem));
         }

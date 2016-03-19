@@ -31,13 +31,6 @@
         }
 
         /// <summary>
-        /// List constructor
-        /// </summary>
-        public List()
-        {
-        }
-
-        /// <summary>
         /// Add new elemet to list
         /// </summary>
         /// <param name="newElement"> New element to list </param>
@@ -147,23 +140,6 @@
                 temp = temp.Next;
             }
             return temp.Value;
-        }
-
-        /// <summary>
-        /// Set new value to list element; Throw OutOfBoundsOfListException() if index is bigger than list size
-        /// </summary>
-        /// <param name="index"> Index of element </param>
-        /// <param name="value"> New element value </param>
-        public void SetNewElementValue(int index, int value)
-        {
-            if (index >= size)
-                throw new OutOfBoundsOfListException();
-            Node temp = head;
-            for (int i = 0; i < index; ++i)
-            {
-                temp = temp.Next;
-            }
-            temp.Value = value;
         }
     }
 }

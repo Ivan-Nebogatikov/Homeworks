@@ -6,12 +6,12 @@ namespace Calculator
     /// <summary>
     /// Class for main program form
     /// </summary>
-    public partial class Form1 : Form
+    public partial class Calculator : Form
     {
         /// <summary>
         /// Form constructor
         /// </summary>
-        public Form1()
+        public Calculator()
         {
             InitializeComponent();
         }

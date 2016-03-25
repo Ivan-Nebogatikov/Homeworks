@@ -25,7 +25,6 @@
         /// </summary>
         public PriorityQueue() : this(defaultMaxPriority)
         {
-
         }
 
         /// <summary>

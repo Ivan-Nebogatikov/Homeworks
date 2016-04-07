@@ -38,9 +38,6 @@
         /// Add new element to stack
         /// </summary>
         /// <param name="newNumber"> Value of new element </param>
-        public void Push(T newNumber)
-        {
-            stack.Add(newNumber);
-        }
+        public void Push(T newNumber) => stack.Add(newNumber);
     }
 }

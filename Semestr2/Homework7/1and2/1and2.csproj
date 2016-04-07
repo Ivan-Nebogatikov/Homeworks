@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmptyStackException.cs" />
+    <Compile Include="Set.cs" />
     <Compile Include="Stack.cs" />
     <Compile Include="ElementDoesNotFoundInListException.cs" />
     <Compile Include="List.cs" />

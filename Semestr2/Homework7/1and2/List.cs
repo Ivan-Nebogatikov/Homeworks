@@ -151,10 +151,7 @@ namespace Problem1and2
         /// Enumberator for list
         /// </summary>
         /// <returns> Enumerator </returns>
-        public ListEnumerator GetEnumerator()
-        {
-            return new ListEnumerator(this);
-        }
+        public ListEnumerator GetEnumerator() => new ListEnumerator(this);
 
         /// <summary>
         /// Implementation for list enumberator

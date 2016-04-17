@@ -44,13 +44,12 @@ namespace Calculator
                 signLabel.Text = ((Button)sender).Text;
                 return;
             }
-            signLabel.Text = ((Button)sender).Text;
-            Calctulate(sender, e);
+            Calculate(sender, e);
             inputLabel.Text = "";
             signLabel.Text = ((Button)sender).Text;
         }
 
-        private void Calctulate(object sender, EventArgs e)
+        private void Calculate(object sender, EventArgs e)
         {
             if (inputLabel.Text.Length == 0)
                 return;

@@ -9,16 +9,18 @@ namespace Problem1
     /// </summary>
     public class Program
     {
+        private const string connectionString = "mongodb://localhost";
+        private const string databaseName = "Dictionary";
+        private const string collectionName = "Note";
         /// <summary>
         /// Main progtam method
         /// </summary>
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            string connectionString = "mongodb://localhost";
             var client = new MongoClient(connectionString);
-            var database = client.GetDatabase("Dictionary");
-            var collection = database.GetCollection<Note>("Note");
+            var database = client.GetDatabase(databaseName);
+            var collection = database.GetCollection<Note>(collectionName);
             while (true)
             {
                 Console.WriteLine("0 - выйти");
@@ -26,7 +28,7 @@ namespace Problem1
                 Console.WriteLine("2 - найти телефон по имени ");
                 Console.WriteLine("3 - найти имя по телефону ");
                 Console.Write("Ввод: ");
-                int number = Convert.ToInt32(Console.ReadLine());
+                var number = Convert.ToInt32(Console.ReadLine());
                 switch (number)
                 {
                     case 0:
@@ -72,7 +74,7 @@ namespace Problem1
             foreach (var node in list)
                 if (node.Number == number)
                 {
-                    Console.WriteLine("Его имя: {0}", node.Name);
+                    Console.WriteLine($"Его имя: {node.Name}");
                     return;
                 }
             Console.WriteLine("Ничего не найдено");
@@ -88,7 +90,7 @@ namespace Problem1
                 if (node.Name == name)
                 {
                     ++count;
-                    Console.WriteLine("Его номер ({0}): {1}", count, node.Number);
+                    Console.WriteLine($"Его номер ({count}): {node.Number}");
                 }
             if (count == 0)
                 Console.WriteLine("Ничего не найдено");

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -20,7 +19,6 @@ namespace Problem2
 
         private void FindButtonClick(object sender, EventArgs e)
         {
-            Stream myStream = null;
             var openFileDialog1 = new OpenFileDialog
             {
                 InitialDirectory = "c:\\",
@@ -32,27 +30,25 @@ namespace Problem2
             {
                 try
                 {
-                    using (myStream)
+                    pathLabel.Text = openFileDialog1.FileName;
+                    var sampleAssembly = Assembly.LoadFile(openFileDialog1.FileName);
+                    foreach (var type in sampleAssembly.GetTypes())
                     {
-                        pathLabel.Text = openFileDialog1.FileName;
-                        var sampleAssembly = Assembly.LoadFile(openFileDialog1.FileName);
-                        foreach (var type in sampleAssembly.GetTypes())
+                        classTextBox.Text += type.FullName + "\r\n";
+                        foreach (var m in type.GetMethods())
                         {
-                            classTextBox.Text += type.FullName + "\r\n";
-                            foreach (var m in type.GetMethods())
+                            classTextBox.Text += @" --> " + m.ReturnType.Name + @"   " + m.Name + @"(";
+                            var p = m.GetParameters();
+                            for (var i = 0; i < p.Length; i++)
                             {
-                                classTextBox.Text += @" --> " + m.ReturnType.Name + @"   " + m.Name + @"(";
-                                var p = m.GetParameters();
-                                for (var i = 0; i < p.Length; i++)
-                                {
-                                    classTextBox.Text += p[i].ParameterType.Name + @" " + p[i].Name;
-                                    if (i + 1 < p.Length) classTextBox.Text += @", ";
-                                }
-                                classTextBox.Text += ")\r\n";
+                                classTextBox.Text += p[i].ParameterType.Name + @" " + p[i].Name;
+                                if (i + 1 < p.Length) classTextBox.Text += @", ";
                             }
-                            classTextBox.Text += "\r\n";
+                            classTextBox.Text += ")\r\n";
                         }
+                        classTextBox.Text += "\r\n";
                     }
+
                 }
                 catch (Exception ex)
                 {

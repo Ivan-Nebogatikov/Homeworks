@@ -32,6 +32,7 @@ namespace Problem2
                 {
                     pathLabel.Text = openFileDialog1.FileName;
                     var sampleAssembly = Assembly.LoadFile(openFileDialog1.FileName);
+                    classTextBox.Text = "";
                     foreach (var type in sampleAssembly.GetTypes())
                     {
                         classTextBox.Text += type.FullName + "\r\n";

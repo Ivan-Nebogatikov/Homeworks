@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -40,6 +41,7 @@ namespace _1
 
         private void CheckWin(string character)
         {
+            System.Func<int, string> label = x => buttons[x].Content.ToString();
             if ((buttons[0].Content.ToString() == buttons[1].Content.ToString() && buttons[0].Content.ToString() == buttons[2].Content.ToString() && buttons[0].Content.ToString() == character)
                 || (buttons[0].Content.ToString() == buttons[4].Content.ToString() && buttons[0].Content.ToString() == buttons[8].Content.ToString() && buttons[0].Content.ToString() == character)
                 || (buttons[0].Content.ToString() == buttons[3].Content.ToString() && buttons[0].Content.ToString() == buttons[6].Content.ToString() && buttons[0].Content.ToString() == character)

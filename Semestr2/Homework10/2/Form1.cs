@@ -10,7 +10,7 @@ namespace Problem2
     public partial class AssemblyViewer : Form
     {
         /// <summary>
-        /// Form consructor
+        /// Form constructor
         /// </summary>
         public AssemblyViewer()
         {
@@ -43,7 +43,8 @@ namespace Problem2
                             for (var i = 0; i < p.Length; i++)
                             {
                                 classTextBox.Text += p[i].ParameterType.Name + @" " + p[i].Name;
-                                if (i + 1 < p.Length) classTextBox.Text += @", ";
+                                if (i + 1 < p.Length)
+                                    classTextBox.Text += @", ";
                             }
                             classTextBox.Text += ")\r\n";
                         }

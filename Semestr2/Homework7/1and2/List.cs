@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Problem1and2
 {
     /// <summary>
     /// Main list class
     /// </summary>
-    public class List<T> : IEnumerable
+    public class List<T> : IEnumerable<T>
     {
         private Node head;
         private int size;
@@ -144,19 +146,13 @@ namespace Problem1and2
         /// <summary>
         /// Implementation for the GetEnumerator method
         /// </summary>
-        /// <returns> Enumbertor </returns>
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-        /// <summary>
-        /// Enumberator for list
-        /// </summary>
-        /// <returns> Enumerator </returns>
-        public ListEnumerator GetEnumerator() => new ListEnumerator(this);
-
+        /// <returns> Enumertor </returns>
+        IEnumerator<T> IEnumerable<T>.GetEnumerator() => new ListEnumerator(this);
+        
         /// <summary>
         /// Implementation for list enumberator
         /// </summary>
-        public class ListEnumerator : IEnumerator
+        public class ListEnumerator : IEnumerator<T>
         {
             private int position = -1;
             private List<T> list;
@@ -201,7 +197,12 @@ namespace Problem1and2
             /// Get current list element in enumerator
             /// </summary>
             object IEnumerator.Current => currentElement.Value;
+
+            public void Dispose()
+            {
+            }
         }
 
+        public IEnumerator GetEnumerator() => new ListEnumerator(this);
     }
 }

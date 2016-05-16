@@ -55,7 +55,7 @@ namespace Problem1and2.Tests
             for (int i = 0; i < 10; ++i)
                 list.Add(i);
             int sum = 0;
-            foreach (var value in list)
+            foreach (int value in list)
                 sum += value;
             Assert.AreEqual(45, sum);
         }

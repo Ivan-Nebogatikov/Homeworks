@@ -8,21 +8,18 @@ namespace Problem1and2
     /// </summary>
     public class Set<T>
     {
-        private List<T> set; 
-
-        /// <summary>
-        /// Set constructor
-        /// </summary>
-        public Set()
-        {
-            set = new List<T>();
-        }
+        private List<T> set = new List<T>();
 
         /// <summary>
         /// Add new element to set
         /// </summary>
         /// <param name="newElement"> Value of new element </param>
-        public void Add(T newElement) => set.Add(newElement);
+        public void Add(T newElement)
+        {
+            if (!set.Contains(newElement))
+                set.Add(newElement);
+        }
+
 
         /// <summary>
         /// Delete element from set
@@ -48,9 +45,9 @@ namespace Problem1and2
         {
             var newSet = new Set<T>();
             var tempList = new List<T>();
-            foreach (var value in setForIntersection.GetAsList())
+            foreach (T value in setForIntersection.GetAsList())
                 tempList.Add(value);
-            foreach (var value in set.Cast<T>().Where(value => tempList.Contains(value)))
+            foreach (var value in set.Where(value => tempList.Contains(value)))
             {
                 newSet.Add(value);
                 tempList.Remove(value);
@@ -66,16 +63,9 @@ namespace Problem1and2
         public Set<T> Union(Set<T> setForUnion)
         {
             var newSet = new Set<T>();
-            var tempList = new List<T>();
-            foreach (var value in setForUnion.GetAsList())
-                tempList.Add(value);
-            foreach (var value in set)
-            {
-                if (tempList.Contains(value))
-                    tempList.Remove(value);
+            foreach (T value in setForUnion.GetAsList())
                 newSet.Add(value);
-            }
-            foreach (var value in tempList)
+            foreach (T value in set)
                 newSet.Add(value);
             return newSet;
         }

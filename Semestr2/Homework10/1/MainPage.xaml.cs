@@ -42,14 +42,14 @@ namespace _1
         private void CheckWin(string character)
         {
             System.Func<int, string> label = x => buttons[x].Content.ToString();
-            if ((buttons[0].Content.ToString() == buttons[1].Content.ToString() && buttons[0].Content.ToString() == buttons[2].Content.ToString() && buttons[0].Content.ToString() == character)
-                || (buttons[0].Content.ToString() == buttons[4].Content.ToString() && buttons[0].Content.ToString() == buttons[8].Content.ToString() && buttons[0].Content.ToString() == character)
-                || (buttons[0].Content.ToString() == buttons[3].Content.ToString() && buttons[0].Content.ToString() == buttons[6].Content.ToString() && buttons[0].Content.ToString() == character)
-                || (buttons[3].Content.ToString() == buttons[4].Content.ToString() && buttons[3].Content.ToString() == buttons[5].Content.ToString() && buttons[3].Content.ToString() == character)
-                || (buttons[6].Content.ToString() == buttons[7].Content.ToString() && buttons[6].Content.ToString() == buttons[8].Content.ToString() && buttons[6].Content.ToString() == character)
-                || (buttons[1].Content.ToString() == buttons[4].Content.ToString() && buttons[1].Content.ToString() == buttons[7].Content.ToString() && buttons[1].Content.ToString() == character)
-                || (buttons[2].Content.ToString() == buttons[5].Content.ToString() && buttons[2].Content.ToString() == buttons[8].Content.ToString() && buttons[2].Content.ToString() == character)
-                || (buttons[2].Content.ToString() == buttons[4].Content.ToString() && buttons[2].Content.ToString() == buttons[6].Content.ToString() && buttons[2].Content.ToString() == character))
+            if ((label(0) == label(1) && label(1) == label(2) && label(0) == character)
+                || (label(0) == label(4) && label(0) == label(8) && label(0) == character)
+                || (label(0) == label(3) && label(0) == label(6) && label(0) == character)
+                || (label(3) == label(4) && label(3) == label(5) && label(3) == character)
+                || (label(6) == label(7) && label(6) == label(8) && label(6) == character)
+                || (label(1) == label(4) && label(1) == label(7) && label(1) == character)
+                || (label(2) == label(5) && label(2) == label(8) && label(2) == character)
+                || (label(2) == label(4) && label(2) == label(6) && label(2) == character))
             {
                 resultLabel.Content = character.ToUpper() + " win";
             }

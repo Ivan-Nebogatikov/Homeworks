@@ -1,12 +1,14 @@
 ﻿/// Funtion for calculation multiplication of numerals in number
-let rec numberalMultiplication n = 
-    match n with 
-    | _ when (Operators.abs(n) < 10) -> Operators.abs(n)
-    | _ ->
-        let numeral = Operators.abs(n % 10)
-        match numeral with
-        | 0 -> 0
-        | _ -> numberalMultiplication (n / 10) * numeral
+let numberalMultiplication x = 
+    let rec multiplication n = 
+        match n with 
+        | _ when n < 10 -> n
+        | _ ->
+            let numeral = n % 10
+            match numeral with
+            | 0 -> 0
+            | _ -> multiplication (n / 10) * numeral
+    multiplication <| Operators.abs(x)
 
     
 [<EntryPoint>]

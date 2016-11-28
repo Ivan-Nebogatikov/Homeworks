@@ -168,15 +168,17 @@ namespace Homework1
                         node = node.LeftChild;
                     }
                     else
+                    {
                         if (node.Parent.Value.CompareTo(node.Value) > 0)
-                    {
-                        node.Parent.LeftChild = node.LeftChild;
-                        node.LeftChild.Parent = node.Parent;
-                    }
-                    else
-                    {
-                        node.Parent.RightChild = node.LeftChild;
-                        node.LeftChild.Parent = node.Parent;
+                        {
+                            node.Parent.LeftChild = node.LeftChild;
+                            node.LeftChild.Parent = node.Parent;
+                        }
+                        else
+                        {
+                            node.Parent.RightChild = node.LeftChild;
+                            node.LeftChild.Parent = node.Parent;
+                        }
                     }
                     return;
                 }

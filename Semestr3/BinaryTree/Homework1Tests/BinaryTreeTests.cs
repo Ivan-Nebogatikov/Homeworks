@@ -5,7 +5,7 @@ namespace Homework1.Tests
     [TestClass()]
     public class BinaryTreeTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void AddTest()
         {
             var tree = new BinaryTree<int>();
@@ -21,7 +21,7 @@ namespace Homework1.Tests
             Assert.IsFalse(tree.IsEmpty());
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void DeleteTest()
         {
             var tree = new BinaryTree<float>();
@@ -50,7 +50,20 @@ namespace Homework1.Tests
             Assert.IsTrue(tree.IsEmpty());
         }
 
-        [TestMethod()]
+        [TestMethod]
+        public void DeleteTest2()
+        {
+            var tree = new BinaryTree<int>();
+            tree.Add(4);
+            tree.Add(1);
+            tree.Add(3);
+            tree.Add(2);
+            tree.Add(5);
+            tree.Delete(4);
+            Assert.IsTrue(tree.Contains(3));
+        }
+
+        [TestMethod]
         public void EnumeratorTest()
         {
             var tree = new BinaryTree<string>();

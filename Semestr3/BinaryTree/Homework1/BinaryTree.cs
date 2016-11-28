@@ -45,7 +45,6 @@ namespace Homework1
             {
                 if (currentNode.Value.CompareTo(newValue) == 0)
                 {
-                    Console.WriteLine("This element already exists in the tree");
                     return;
                 }
                 if (currentNode.Value.CompareTo(newValue) < 0)
@@ -62,7 +61,9 @@ namespace Homework1
                 else
                 {
                     if (currentNode.LeftChild != null)
+                    {
                         currentNode = currentNode.LeftChild;
+                    }
                     else
                     {
                         var newNode = new Node(newValue, currentNode);
@@ -79,9 +80,13 @@ namespace Homework1
         public void Print()
         {
             if (root == null)
+            {
                 Console.Write("Tree is empty");
+            }
             else
+            {
                 PrintChild(root);
+            }
             Console.WriteLine();
         }
 
@@ -111,9 +116,13 @@ namespace Homework1
             while (true)
             {
                 if (node == null)
+                {
                     return false;
+                }
                 if (node.Value.CompareTo(value) == 0)
+                {
                     return true;
+                }
                 node = node.Value.CompareTo(value) < 0 ? node.RightChild : node.LeftChild;
             }
         }
@@ -127,18 +136,28 @@ namespace Homework1
         private void DeleteFromTree(ref Node node, T value)
         {
             if (node == null)
+            {
                 return;
+            }
             if (node.Value.CompareTo(value) == 0)
             {
                 if (node.LeftChild == null && node.RightChild == null)
                 {
                     if (node.Parent == null)
+                    {
                         node = null;
+                    }
                     else
+                    {
                         if (node.Parent.Value.CompareTo(node.Value) > 0)
-                        node.Parent.LeftChild = null;
-                    else
-                        node.Parent.RightChild = null;
+                        {
+                            node.Parent.LeftChild = null;
+                        }
+                        else
+                        {
+                            node.Parent.RightChild = null;
+                        }
+                    }
                     return;
                 }
                 if (node.LeftChild != null && node.RightChild == null)
@@ -169,28 +188,34 @@ namespace Homework1
                         node = node.RightChild;
                     }
                     else
+                    {
                         if (node.Parent.Value.CompareTo(node.Value) > 0)
-                    {
-                        node.Parent.LeftChild = node.RightChild;
-                        node.RightChild.Parent = node.Parent;
-                    }
-                    else
-                    {
-                        node.Parent.RightChild = node.RightChild;
-                        node.RightChild.Parent = node.Parent;
+                        {
+                            node.Parent.LeftChild = node.RightChild;
+                            node.RightChild.Parent = node.Parent;
+                        }
+                        else
+                        {
+                            node.Parent.RightChild = node.RightChild;
+                            node.RightChild.Parent = node.Parent;
+                        }
                     }
                     return;
                 }
                 var tempNode = node.LeftChild;
-                while (tempNode.LeftChild != null || tempNode.RightChild != null)
+                while (tempNode.RightChild != null)
                 {
-                    tempNode = tempNode.RightChild ?? tempNode.LeftChild;
+                    tempNode = tempNode.RightChild;
                 }
                 if (tempNode.Parent.Value.CompareTo(tempNode.Value) < 0)
+                {
                     tempNode.Parent.RightChild = null;
+                }
                 else
+                {
                     tempNode.Parent.LeftChild = null;
-                tempNode.Parent = null;
+                }
+                tempNode.Parent = tempNode;
                 node.Value = tempNode.Value;
             }
             else
@@ -199,7 +224,6 @@ namespace Homework1
                 DeleteFromTree(ref newNode, value);
             }
         }
-
 
         private class TreeIterator : IEnumerator<T>
         {
@@ -219,10 +243,14 @@ namespace Homework1
             private void GenerateList(Node node)
             {
                 if (node.LeftChild != null)
+                {
                     GenerateList(node.LeftChild);
+                }
                 treeList.Add(node.Value);
-                if  (node.RightChild != null)
+                if (node.RightChild != null)
+                {
                     GenerateList(node.RightChild);
+                }
             }
 
             /// <summary>
@@ -266,7 +294,7 @@ namespace Homework1
         /// </summary>
         /// <returns> Enumerator </returns>
         public IEnumerator<T> GetEnumerator() => new TreeIterator(this);
-        
+
         /// <summary>
         /// Enumerator for collection
         /// </summary>

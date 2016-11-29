@@ -6,21 +6,20 @@ using System.Windows.Forms;
 
 namespace Homework4
 {
-    public partial class mainForm : Form
+    public partial class MainForm : Form
     {
         private readonly Pen pen = new Pen(Color.Black, 2);
         private readonly Graphics graphics;
         private bool isDrawing;
         private Point firstCoordinate;
         private List<Tuple<Point, Point>> lines = new List<Tuple<Point, Point>>();
-        private readonly Stack<List<Tuple<Point, Point>>> states = new Stack<List<Tuple<Point, Point>>>();
-        private readonly Stack<List<Tuple<Point, Point>>> redo = new Stack<List<Tuple<Point, Point>>>();
+        private StateManager stateManager = new StateManager();
 
-        public mainForm()
+        public MainForm()
         {
             InitializeComponent();
             graphics = canvas.CreateGraphics();
-            states.Push(new List<Tuple<Point, Point>>()); // Intitial state
+            stateManager.States.Push(new List<Tuple<Point, Point>>()); // Intitial state
         }
 
         private void CanvasPaint(object sender, PaintEventArgs e)
@@ -59,10 +58,10 @@ namespace Homework4
                 secondCoordinate.Y -= canvas.Top;
                 lines.Add(new Tuple<Point, Point>(firstCoordinate, secondCoordinate));
                 choosingLineComboBox.Items.Add("Линия " + (choosingLineComboBox.Items.Count + 1));
-                states.Push(lines.ToList());
+                stateManager.States.Push(lines.ToList());
                 undoButton.Enabled = true;
                 RedoButton.Enabled = false;
-                redo.Clear();
+                stateManager.Redo.Clear();
             }
         }
 
@@ -72,7 +71,6 @@ namespace Homework4
             secondEndButton.Enabled = true;
             changingButton.Enabled = true;
         }
-
 
         private void ChangingButtonClick(object sender, EventArgs e)
         {
@@ -100,15 +98,15 @@ namespace Homework4
 
         private void UndoButtonClick(object sender, EventArgs e)
         {
-            if (states.Count > 1)
+            if (stateManager.States.Count > 1)
             {
-                var temp = states.Pop();
-                redo.Push(temp);
+                var temp = stateManager.States.Pop();
+                stateManager.Redo.Push(temp);
                 RedoButton.Enabled = true;
-                temp = states.Pop();
+                temp = stateManager.States.Pop();
                 lines = temp;
-                states.Push(temp.ToList());
-                if (states.Count <= 1)
+                stateManager.States.Push(temp.ToList());
+                if (stateManager.States.Count <= 1)
                     undoButton.Enabled = false;
                 ComboBoxChanging();
             }
@@ -121,12 +119,12 @@ namespace Homework4
 
         private void RedoButtonClick(object sender, EventArgs e)
         {
-            var temp = redo.Pop();
-            states.Push(temp.ToList());
+            var temp = stateManager.Redo.Pop();
+            stateManager.States.Push(temp.ToList());
             lines = temp;
             undoButton.Enabled = true;
             ComboBoxChanging();
-            if (redo.Count == 0)
+            if (stateManager.Redo.Count == 0)
                 RedoButton.Enabled = false;
         }
 

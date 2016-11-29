@@ -1,6 +1,6 @@
 ﻿namespace Homework4
 {
-    partial class mainForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -181,7 +181,7 @@
             this.ClientSize = new System.Drawing.Size(699, 316);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(715, 355);
-            this.Name = "mainForm";
+            this.Name = "MainForm";
             this.Text = "Редактор";
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

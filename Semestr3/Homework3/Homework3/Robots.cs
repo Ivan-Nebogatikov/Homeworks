@@ -26,14 +26,27 @@ namespace Homework3
 
         private bool HasSameParity()
         {
-            var dist = graph.WayToVertices(robots[0]);
-            return robots.All(robot => (dist[robot] + dist[robots[0]])%2 == 0);
+            var tempRobots = new List<int>(robots);
+            var dist = graph.WayToVertices(tempRobots[0]);
+            tempRobots.RemoveAll(robot => dist[robot] % 2 == 0);
+            if (tempRobots.Count == 0)
+            {
+                return true;
+            }
+            if (tempRobots.Count == 1)
+            {
+                return false;
+            }
+            dist = graph.WayToVertices(tempRobots[0]);
+            tempRobots.RemoveAll(robot => dist[robot] % 2 == 0);
+            return tempRobots.Count == 0;
         }
 
         /// <summary>
         /// Checking will robots be destroyed
         /// </summary>
         /// <returns> True if robots will be destroyed </returns>
-        public bool WillBeDestroyed() => graph.HasCycleWithOddLenght() || HasSameParity();
+        public bool WillBeDestroyed() 
+            => (robots.Count > 1) && (graph.HasCycleWithOddLenght() || HasSameParity());
     }
 }

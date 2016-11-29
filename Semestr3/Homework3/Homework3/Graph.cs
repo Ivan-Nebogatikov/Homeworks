@@ -36,20 +36,19 @@ namespace Homework3
             }
         }
 
-
-        private void DFS(int vert, int from, ref int[] mark, int step, ref bool isCycleFound)
+        private void DFS(int startVertex, int from, ref int[] mark, int step, ref bool isCycleFound)
         {
-            if (mark[vert] != 0)
+            if (mark[startVertex] != 0)
                 return;
             ++step;
-            mark[vert] = step;
-            foreach (var vertex in neighbours[vert])
+            mark[startVertex] = step;
+            foreach (var vertex in neighbours[startVertex])
             {
                 if (vertex != from)
                 {
-                    if (mark[vertex] > 0 && mark[vertex] % 2 == mark[vert] % 2)
+                    if (mark[vertex] > 0 && mark[vertex] % 2 == mark[startVertex] % 2)
                         isCycleFound = true;
-                    DFS(vertex, vert, ref mark, step, ref isCycleFound);
+                    DFS(vertex, startVertex, ref mark, step, ref isCycleFound);
                 }
             }
         }

@@ -8,7 +8,8 @@ namespace Homework2
     /// </summary>
     public class Network
     {
-        private List<Computer> computers;
+        private readonly List<Computer> computers;
+        private readonly Random random = new Random();
 
         /// <summary>
         /// Network constructor
@@ -34,10 +35,13 @@ namespace Homework2
         {
             foreach (var computer in computers)
             {
-                foreach (var neighbour in computer.Neighbours)
+                if (computer.Infected)
                 {
-                    if (new Random().NextDouble() < computers[neighbour].GetOSProbability())
-                        computers[neighbour].Infected = true;
+                    foreach (var neighbour in computer.Neighbours)
+                    {
+                        if (random.NextDouble() < computers[neighbour].GetOSProbability())
+                            computers[neighbour].Infected = true;
+                    }
                 }
             }
         }
@@ -49,7 +53,7 @@ namespace Homework2
             {
                 if (computers[i].Infected)
                     ++count;
-                Console.WriteLine("Компьтер № " + i + " " + (computers[i].Infected ? " ": "не ") + "заражен");
+                Console.WriteLine("Компьтер № " + i + " " + (computers[i].Infected ? " " : "не ") + "заражен");
             }
             Console.WriteLine();
             return count == computers.Count;

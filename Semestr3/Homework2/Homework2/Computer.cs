@@ -25,11 +25,11 @@ namespace Homework2
         /// <param name="os"> Type of OS </param>
         /// <param name="infection"> Is infected in default </param>
         /// <param name="neigh"> List of indexes of heighbours computers </param>
-        public Computer(OS os, bool infection, List<int> neigh)
+        public Computer(OS os, bool infection, List<int> heighbours)
         {
             this.os = os;
             Infected = infection;
-            Neighbours = neigh;
+            Neighbours = heighbours;
         }
 
         /// <summary>

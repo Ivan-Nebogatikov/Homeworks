@@ -1,10 +1,9 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Homework4
 {
     /// <summary>
-    /// Class for lines to 
+    /// Class for lines to drawing
     /// </summary>
     public class Line
     {

@@ -14,7 +14,7 @@ namespace Homework4
 
         private readonly Stack<List<Line>> redo;
 
-        private bool changingLine = false;
+        private bool changingLine;
 
         /// <summary>
         /// Class constructor

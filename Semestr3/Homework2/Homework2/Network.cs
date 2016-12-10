@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Homework2
 {
@@ -8,7 +9,11 @@ namespace Homework2
     /// </summary>
     public class Network
     {
-        private readonly List<Computer> computers;
+        /// <summary>
+        /// Computers in the system
+        /// </summary>
+        public List<Computer> Computers { get; }
+
         private readonly Random random = new Random();
 
         /// <summary>
@@ -17,7 +22,7 @@ namespace Homework2
         /// <param name="computers"> List of computers in the network </param>
         public Network(List<Computer> computers)
         {
-            this.computers = computers;
+            Computers = computers;
         }
 
         /// <summary>
@@ -31,32 +36,33 @@ namespace Homework2
             }
         }
 
-        private void Infections()
+        /// <summary>
+        /// Do infection move
+        /// </summary>
+        public void Infections()
         {
-            foreach (var computer in computers)
+            var infectedComputers = Computers.Where(computer => computer.Infected).ToList();
+            foreach (var computer in infectedComputers)
             {
-                if (computer.Infected)
+                foreach (var neighbour in computer.Neighbours)
                 {
-                    foreach (var neighbour in computer.Neighbours)
-                    {
-                        if (random.NextDouble() < computers[neighbour].GetOSProbability())
-                            computers[neighbour].Infected = true;
-                    }
+                    if (random.NextDouble() <= Computers[neighbour].GetOSProbability())
+                        Computers[neighbour].Infected = true;
                 }
             }
         }
-
+        
         private bool Checking()
         {
             int count = 0;
-            for (int i = 0; i < computers.Count; ++i)
+            for (int i = 0; i < Computers.Count; ++i)
             {
-                if (computers[i].Infected)
+                if (Computers[i].Infected)
                     ++count;
-                Console.WriteLine("Компьтер № " + i + " " + (computers[i].Infected ? " " : "не ") + "заражен");
+                Console.WriteLine("Компьтер № " + i + " " + (Computers[i].Infected ? " " : "не ") + "заражен");
             }
             Console.WriteLine();
-            return count == computers.Count;
+            return count == Computers.Count || count == 0;
         }
     }
 }

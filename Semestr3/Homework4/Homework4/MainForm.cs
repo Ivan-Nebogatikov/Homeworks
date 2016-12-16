@@ -12,6 +12,7 @@ namespace Homework4
         private bool isDrawing;
         private Point firstCoordinate;
         private StateManager stateManager = new StateManager();
+        private Line currentLine = new Line(new Point(0, 0), new Point(0, 0));
 
         public MainForm()
         {
@@ -25,7 +26,11 @@ namespace Homework4
             currentPoint.X -= canvas.Left;
             currentPoint.Y -= canvas.Top;
             if (isDrawing)
-                new Line(firstCoordinate, currentPoint).Draw(e.Graphics);
+            {
+                currentLine.Begin = firstCoordinate;
+                currentLine.End = currentPoint;
+                currentLine.Draw(e.Graphics);
+            }
             stateManager.DrawCurrentState(e.Graphics);
         }
 
@@ -111,7 +116,9 @@ namespace Homework4
             undoButton.Enabled = true;
             ComboBoxChanging();
             if (stateManager.IsRedoEmpty())
+            {
                 RedoButton.Enabled = false;
+            }
         }
 
         private void ComboBoxChanging()

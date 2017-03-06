@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "NumeralMultiplication", "NumeralMultiplication\NumeralMultiplication.fsproj", "{498756E6-89B3-4816-881F-8E74736673FF}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Palindrome", "Palindrome\Palindrome.fsproj", "{E0A37FAD-0377-4E14-9706-54E03F53313D}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "DifferentElements", "DifferentElements\DifferentElements.fsproj", "{BA76F73C-D7A5-4DEA-B82A-79ABD56CA429}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MergeSort", "MergeSort\MergeSort.fsproj", "{8CE3783A-BE75-40B8-8DD6-06AB1ABF80E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{BA76F73C-D7A5-4DEA-B82A-79ABD56CA429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA76F73C-D7A5-4DEA-B82A-79ABD56CA429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA76F73C-D7A5-4DEA-B82A-79ABD56CA429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE3783A-BE75-40B8-8DD6-06AB1ABF80E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE3783A-BE75-40B8-8DD6-06AB1ABF80E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE3783A-BE75-40B8-8DD6-06AB1ABF80E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE3783A-BE75-40B8-8DD6-06AB1ABF80E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

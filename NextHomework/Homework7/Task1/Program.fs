@@ -1,17 +1,12 @@
-﻿let roundHelp (x : float) (n : int) = System.Math.Round(x, n)
+﻿module Program
 
+/// Help function for rounding
+let roundHelp (x : float) (n : int) = System.Math.Round(x, n)
+
+/// Workflow for rounded calculations
 type WorkflowBuilder (n) = 
     member this.Bind (x, next) = 
         next <| roundHelp x n
 
     member this.Return x =
         roundHelp x n 
-
-let test =
-    WorkflowBuilder 3 {
-        let! a = 2.0 / 12.0
-        let! b = 3.5
-        return a / b
-    }
-
-printfn "%A" test

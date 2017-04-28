@@ -7,7 +7,7 @@ open Program
 
 [<Test>]
 let ``Test with simple CountdownEvent should finished corectly`` () = 
-    let event = MyCountdownEvent(2)  
+    let event = new MyCountdownEvent(2)  
     let mutable counter = 0
     Async.Start(
         async{
@@ -62,7 +62,7 @@ let ``Test with 2 CountdownEvents`` () =
     event.Signal()
     Thread.Sleep 100
     event.Signal()
-    Thread.Sleep 100
+    Thread.Sleep 200
     counter |> should equal 9
 
     

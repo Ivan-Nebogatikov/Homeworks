@@ -21,4 +21,8 @@ type MyCountdownEvent(cnt) =
         count <- max (count - 1) 0
         if count = 0 then
             event.Set() |> ignore
+     
+    interface IDisposable with
+        member this.Dispose () =
+            event.Dispose()
     

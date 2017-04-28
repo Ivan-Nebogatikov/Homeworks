@@ -28,7 +28,7 @@ let rec applReduction a b =
 /// Main function for beta reduction
 let rec reduction term =
     match term with
-    | Var (var) -> term
+    | Var (_) -> term
     | Appl (x, t) -> 
         match x with 
         | Var (v) -> term

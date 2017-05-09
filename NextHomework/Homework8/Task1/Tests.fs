@@ -20,3 +20,11 @@ let ``E-maxx test`` () =
     debugLengthList |> should not' (be Empty)
     for x in debugLengthList do
         x |> should be (greaterThan 0)
+
+[<Test>]
+let ``Regex site test`` () = 
+    debugLengthList <- []
+    sizeOfAllReferencedPages "http://www.regular-expressions.info/catastrophic.html"
+    debugLengthList |> should not' (be Empty)
+    for x in debugLengthList do
+        x |> should be (greaterThan 0)

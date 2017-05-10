@@ -90,3 +90,24 @@ let ``Test with race condition`` () =
     event.Signal()
     Thread.Sleep 100
     counter |> should equal 9
+    
+[<Test>]
+let ``Test with race condition 2`` () = 
+    for i in 1..20 do
+        let event = new MyCountdownEvent(2)  
+        let mutable counter = 0
+        let thread1 = 
+            async {
+                event.Signal()
+                event.Wait()
+                counter <- counter + 10
+            }
+        let thread2 = 
+            async {
+                event.Signal()
+                event.Wait()
+                counter <- counter + 1
+            }
+        [thread1; thread2]|> Async.Parallel |> Async.RunSynchronously |> ignore
+        Thread.Sleep 200
+        counter |> should equal 11

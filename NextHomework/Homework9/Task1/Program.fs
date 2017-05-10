@@ -9,17 +9,16 @@ type MyCountdownEvent(cnt) =
         raise (ArgumentOutOfRangeException("Аргумент должен быть положительным!"))
     let event = new ManualResetEvent(false)
     let mutable count = cnt
-
+    
     /// Locking the thread
     member this.Wait () = 
-        if count <= 0 then
-            raise (ArgumentOutOfRangeException("Нельзя остановить поток, если значение = 0"))
-        event.WaitOne() |> ignore
+        if count > 0 then
+            event.WaitOne() |> ignore
 
     /// Decreasing counter and realising thread if counter = 0
     member this.Signal () = 
-        count <- max (count - 1) 0
-        if count = 0 then
+        count <- Interlocked.Decrement(&count)
+        if count <= 0 then
             event.Set() |> ignore
      
     interface IDisposable with
